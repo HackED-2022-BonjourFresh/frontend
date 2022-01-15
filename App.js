@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, DeviceEventEmitter } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 
-// import WeekPlan from './pages/WeekPlan.js';
+import WeekPlan from './pages/WeekPlan.js';
 // import Week from './pages/Components/Week.js';
 import Home from './pages/Home.js';
 import Login from './pages/Login.js';
@@ -17,11 +17,19 @@ const Tab = createBottomTabNavigator();
 function MyTabs() {
   const [isSignedIn, setIsSignedIn] = useState(false);
 
+  DeviceEventEmitter.addListener("event.loggedIn", (d) => {
+    setIsSignedIn(true);
+	});
+
   return (
     <Tab.Navigator>
       { isSignedIn 
-        ? <Tab.Screen name="Home" component={Home} />
-        : <Tab.Screen name="Login" component={Login} />}
+        ? (<>
+            <Tab.Screen name="Home" component={Home} />
+            <Tab.Screen name="Plan" component={WeekPlan} />
+          </>)
+        : <Tab.Screen name="Login" component={Login} />
+      }
     </Tab.Navigator>
   );
 }

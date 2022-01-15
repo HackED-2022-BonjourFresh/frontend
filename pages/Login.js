@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, ScrollView, DeviceEventEmitter } from 'react-native';
 import { Button, Input, ButtonGroup } from 'react-native-elements';
 import SelectDropdown from 'react-native-select-dropdown';
 import FontAwesome from "react-native-vector-icons/FontAwesome";
@@ -91,24 +91,19 @@ const Login = ({navigation, props}) => {
 
     const signUp = () => {
         console.log('sending http request to make new account');
-
-        console.log(user);
-        axios.post("http://localhost:5000/sign_up",username)
+        axios.post("http://127.0.0.1:5000/sign_up", {username})
             .then(res => {
-                if (res.status === 201){
-                    navigation.replace('Main', {username});
+                if (res.status === 200){
+                    console.log('signed up');
                 }
             }); // Change this later
     }
 
     const login = () => {
         console.log('send http request for login');
-
-        axios.post(`http://localhost:5000/login/`, username).then(resp => {
+        axios.post(`http://127.0.0.1:5000/login`, {username}).then(resp => {
             if (resp.status === 200){
-                if (resp.status === 200){
-                    navigation.replace('Main', {username: resp.data.user});
-                }
+                DeviceEventEmitter.emit("event.loggedIn");
             }
         });
     }
