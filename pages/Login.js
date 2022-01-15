@@ -79,7 +79,7 @@ const Login = ({navigation, props}) => {
 		}
 	}
 
-    const formChanged = () => {
+    const formChanged = (label,text) => {
         switch (label) {
             case 'username':
                 setUsername(text);
