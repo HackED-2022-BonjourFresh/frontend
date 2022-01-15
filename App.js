@@ -26,6 +26,50 @@ export default function App() {
             }
           }}
         />
+
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{
+            title: '',
+            headerStyle: {
+              height: '0px'
+            }
+          }}
+        />
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{
+            title: '',
+            headerStyle: {
+              height: '0px'
+            }
+          }}
+        />
+
+        <Stack.Screen
+          name="Week"
+          component={Week}
+          options={{
+            title: '',
+            headerStyle: {
+              height: '0px'
+            }
+          }}
+        />
+
+        <Stack.Screen
+          name="Recipe"
+          component={Recipe}
+          options={{
+            title: '',
+            headerStyle: {
+              height: '0px'
+            }
+          }}
+        />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
