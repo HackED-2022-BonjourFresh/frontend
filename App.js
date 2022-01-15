@@ -14,66 +14,22 @@ import Login from './pages/Login.js';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
+function MyTabs() {
+  const [isSignedIn, setIsSignedIn] = useState(false);
+
+  return (
+    <Tab.Navigator>
+      { isSignedIn 
+        ? <Tab.Screen name="Home" component={Home} />
+        : <Tab.Screen name="Login" component={Login} />}
+    </Tab.Navigator>
+  );
+}
+
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        {/*<Stack.Screen
-          name="Login"
-          component={Login}
-          options={{
-            title: '',
-            headerStyle: {
-              height: '0px'
-            }
-          }}
-        />*/}
-
-        {/*<Stack.Screen
-          name="Home"
-          component={Home}
-          options={{
-            title: '',
-            headerStyle: {
-              height: '0px'
-            }
-          }}
-        />*/}
-        
-        <Stack.Screen
-          name="Recipe"
-          component={Recipe}
-          options={{
-            title: '',
-            headerStyle: {
-              height: '0px'
-            }
-          }}
-        />
-
-        {/*<Stack.Screen
-          name="WeekPlan"
-          component={WeekPlan}
-          options={{
-            title: '',
-            headerStyle: {
-              height: '0px'
-            }
-          }}
-        />
-
-        <Stack.Screen
-          name="Week"
-          component={Week}
-          options={{
-            title: '',
-            headerStyle: {
-              height: '0px'
-            }
-          }}
-        /> */}
-
-      </Stack.Navigator>
+      <MyTabs />
     </NavigationContainer>
   );
 }
