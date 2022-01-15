@@ -92,12 +92,8 @@ const Login = ({navigation, props}) => {
     const signUp = () => {
         console.log('sending http request to make new account');
 
-        const user = {
-            username,
-        };
-
         console.log(user);
-        axios.post("https://localhost.com/createUser",user)
+        axios.post("https://localhost.com/sign_up",username)
             .then(res => {
                 if (res.status === 201){
                     navigation.replace('Main', {username});
@@ -108,7 +104,7 @@ const Login = ({navigation, props}) => {
     const login = () => {
         console.log('send http request for login');
 
-        axios.get(`https://localhost.com/login/${username}`).then(resp => {
+        axios.post(`https://localhost.com/login/`, username).then(resp => {
             if (resp.status === 200){
                 if (resp.status === 200){
                     navigation.replace('Main', {username: resp.data.user});

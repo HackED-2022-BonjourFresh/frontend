@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Text, View, StyleSheet, ScrollView } from 'react-native';
 import { Button, Input, ButtonGroup } from 'react-native-elements';
 import SelectDropdown from 'react-native-select-dropdown';
-import FontAwesome from "react-native-vector-icons/FontAwesome";
 import axios from 'axios';
 import { View } from 'react-native';
 
@@ -11,16 +10,10 @@ import { Contaciner, Navbar } from 'navbar-native';
 const Recipe = ({navigation, dishes_I}) => {
 
     // recipeIndex = i in dishes[i]
-    const [dishesID, setdishesID] = useState(recipeIndex.id);
-
-
+    const [dishesID, setdishesID] = useState(dishes_I.id);
+    const [dishesImage, setdishesImage] = useState(dishes_I.image);
+    const [dishesName, setdishesName] = useState(dishes_I.title);
     
-    useEffect(() => {
-        axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=10`)
-            .then(res => {
-                setDishes(res.data.results);
-            });
-    }, []);
 
     return (
         <View>
@@ -41,9 +34,10 @@ const Recipe = ({navigation, dishes_I}) => {
                     }]}
                 />
             </Container>
-            <Image>
+            <Image source={dishesImage}/>
+            <Text></Text>
 
-            </Image>
+
         </View>
     );
 }
