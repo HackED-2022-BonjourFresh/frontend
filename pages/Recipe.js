@@ -13,7 +13,8 @@ const Recipe = ({navigation, dishes_I}) => {
     const [dishesID, setdishesID] = useState(dishes_I.id);
     const [dishesImage, setdishesImage] = useState(dishes_I.image);
     const [dishesName, setdishesName] = useState(dishes_I.title);
-    
+    const [dishesTime, setdishesTime] = useState(dishes_I.readyInMinutes);
+
 
     return (
         <View>
@@ -35,7 +36,37 @@ const Recipe = ({navigation, dishes_I}) => {
                 />
             </Container>
             <Image source={dishesImage}/>
-            <Text></Text>
+            <Text>{dishesName}</Text>
+            <View style={{flexDirection:"row", alignItems: 'center', paddingTop: 10}}>
+                <View>
+                    <Text>
+                        {dishesTime} min
+                    </Text>
+                    <Text>
+                        Total
+                    </Text>
+                </View>
+                
+                <View>
+                    <Text>
+                        {dishesTime} min
+                    </Text>
+                    <Text>
+                        Total
+                    </Text>
+                </View>                
+                
+                <View>
+                    <Text>
+                        {dishesTime} min
+                    </Text>
+                    <Text>
+                        Total
+                    </Text>
+                </View>
+            </View>
+
+
 
 
         </View>
