@@ -4,12 +4,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import Week from './pages/Login/Week.js';
-import Main from './pages/';
-import Menu from './Containers/Menu/Menu';
-import User from './Containers/User/User';
-import NutrientCard from './Components/NutrientCard';
-import parseErrorStack from 'react-native/Libraries/Core/Devtools/parseErrorStack';
+import Week from './pages/Components/Week.js';
+import Home from './pages/Home.js';
+import Login from './Containers/pages/Login.js';
+import Recipe from './Containers/pages/Recipe.js';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
