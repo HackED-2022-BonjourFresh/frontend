@@ -5,11 +5,11 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 
-import WeekPlan from './pages/WeekPlan.js';
-import Week from './pages/Components/Week.js';
+// import WeekPlan from './pages/WeekPlan.js';
+// import Week from './pages/Components/Week.js';
 import Home from './pages/Home.js';
-import Login from './Containers/pages/Login.js';
-import Recipe from './Containers/pages/Recipe.js';
+import Login from './pages/Login.js';
+// import Recipe from './pages/Recipe.js';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -18,7 +18,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Login"
           component={Login}
           options={{
@@ -27,7 +27,7 @@ export default function App() {
               height: '0px'
             }
           }}
-        />
+        /> */}
 
         <Stack.Screen
           name="Home"
@@ -40,7 +40,7 @@ export default function App() {
           }}
         />
         
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Recipe"
           component={Recipe}
           options={{
@@ -71,7 +71,7 @@ export default function App() {
               height: '0px'
             }
           }}
-        />
+        /> */}
 
       </Stack.Navigator>
     </NavigationContainer>
