@@ -14,7 +14,25 @@ const Recipe = ({navigation, dishes_I}) => {
     const [dishesImage, setdishesImage] = useState(dishes_I.image);
     const [dishesName, setdishesName] = useState(dishes_I.title);
     const [dishesTime, setdishesTime] = useState(dishes_I.readyInMinutes);
+    const [dishesCalories, setdishesCalories] = useState(null);
+    useEffect(() => {
+        let text = dishes_I.summary;
+        const oneServingSplit = text.split("<b>");
 
+        for (var i = 0; i < oneServingSplit.length; i++) {
+            console.log(oneServingSplit[i]);
+            if (oneServingSplit[i].includes("calories")){
+                // Split by </b>
+                const removeB = oneServingSplit[i].split("</b>");
+                // remove is a list, beginning contains "___ calories"
+                const finalStringArray = removeB[0].split(" ");
+                const number = finalStringArray[0]
+                setdishesCalories(number); 
+            }
+
+        }
+        
+    }, []);
 
     return (
         <View>
@@ -49,10 +67,10 @@ const Recipe = ({navigation, dishes_I}) => {
                 
                 <View>
                     <Text>
-                        {dishesTime} min
+                        {dishesCalories}
                     </Text>
                     <Text>
-                        Total
+                        Calories
                     </Text>
                 </View>                
                 
@@ -65,9 +83,6 @@ const Recipe = ({navigation, dishes_I}) => {
                     </Text>
                 </View>
             </View>
-
-
-
 
         </View>
     );
