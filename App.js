@@ -18,7 +18,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {/* <Stack.Screen
+        <Stack.Screen
           name="Login"
           component={Login}
           options={{
@@ -27,9 +27,9 @@ export default function App() {
               height: '0px'
             }
           }}
-        /> */}
+        />
 
-        <Stack.Screen
+        {/*<Stack.Screen
           name="Home"
           component={Home}
           options={{
@@ -38,7 +38,7 @@ export default function App() {
               height: '0px'
             }
           }}
-        />
+        />*/}
         
         {/* <Stack.Screen
           name="Recipe"

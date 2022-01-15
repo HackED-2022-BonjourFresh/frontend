@@ -19,8 +19,8 @@ const styles = StyleSheet.create({
 	buttonText: {
 		color: 'black'
 	},
-	yellowBackground: {
-		backgroundColor: '#FFC72C'
+	greenBackground: {
+		backgroundColor: '#003314'
 	},
 	whiteText: {
 		color: 'white'
@@ -108,7 +108,74 @@ const Login = ({navigation, props}) => {
     const login = () => {
         console.log('send http request for login');
 
-        axios.get("https://localhost.com/login")
+        axios.get(`https://localhost.com/login/${username}`).then(resp => {
+            if (resp.status === 200){
+                if (resp.status === 200){
+                    navigation.replace('Main', {username: resp.data.user});
+                }
+            }
+        });
     }
+    return (
+        <View>
+            <ScrollView>
+                <View style={styles.buttonContainer}>
+                    <View style={styles.buttonStyle}>
+                        <Button
+                            title="Login"
+                            type={buttonSelected === 1 ? "solid" : "clear"}
+                            titleStyle={buttonSelected === 1 ? styles.whiteText : styles.buttonText}
+                            buttonStyle={buttonSelected === 1 ? [styles.buttonStyle , styles.greenBackground] : styles.buttonStyle}
+                            onPress={()=> buttonClicked('login')}
+                        />
+                    </View>
+					<View style={styles.buttonStyle}>
+						<Button
+							title="Sign Up"
+							type={buttonSelected === 2 ? "solid" : "clear"}
+							titleStyle={buttonSelected === 2 ? styles.whiteText : styles.buttonText}
+							buttonStyle={buttonSelected === 2 ? [styles.buttonStyle, styles.greenBackground] : styles.buttonStyle}
+							onPress={() => buttonClicked('signup')}
+						/>
+					</View>
+                </View>
+                { buttonSelected == 2
+                ? <View style={styles.inputForm}>
+                    <Input
+                        placeholder='Username'
+                        onChangeText={value => formChanged('username', value)}
+                    />
+                    <View style={styles.buttonStyle}>
+                        <Button
+                            title={"Sign Up"}
+                            titleStyle={styles.whiteText}
+                            buttonStyle={[styles.buttonStyle, styles.greenBackground]}
+                            onPress={() => signUp()}
+                        />
+                    </View>
+                </View> 
+                : 
+                <View style={styles.loginForm}>
+                    <Input
+                        placeholder='Username'
+                        onChangeText={value => formChanged('username', value)}
+                    />
+
+                    <View style={styles.buttonStyle}>
+                        <Button
+                            title={"Login"}
+                            titleStyle={styles.whiteText}
+                            buttonStyle={[styles.buttonStyle, styles.greenBackground]}
+                            onPress={() => login()}
+                        />
+
+                    </View>
+
+                </View>}
+            </ScrollView>
+        </View>
+    );
 
 }
+
+export default Login;
