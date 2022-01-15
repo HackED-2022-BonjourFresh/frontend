@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function Home(){
     return (
         <View style={StyleSheet.container}>
-            <Text>Page that contains the week pages for given recipes</Text>
+            <Text>Page that contains the nav bar for the recipe lists</Text>
             <StatusBar style="auto" />
         </View>
     );

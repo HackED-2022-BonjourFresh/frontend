@@ -4,6 +4,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+
+import WeekPlan from './pages/WeekPlan.js';
 import Week from './pages/Components/Week.js';
 import Home from './pages/Home.js';
 import Login from './Containers/pages/Login.js';
@@ -37,9 +39,21 @@ export default function App() {
             }
           }}
         />
+        
         <Stack.Screen
-          name="Home"
-          component={Home}
+          name="Recipe"
+          component={Recipe}
+          options={{
+            title: '',
+            headerStyle: {
+              height: '0px'
+            }
+          }}
+        />
+
+        <Stack.Screen
+          name="WeekPlan"
+          component={WeekPlan}
           options={{
             title: '',
             headerStyle: {
@@ -51,17 +65,6 @@ export default function App() {
         <Stack.Screen
           name="Week"
           component={Week}
-          options={{
-            title: '',
-            headerStyle: {
-              height: '0px'
-            }
-          }}
-        />
-
-        <Stack.Screen
-          name="Recipe"
-          component={Recipe}
           options={{
             title: '',
             headerStyle: {
