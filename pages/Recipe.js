@@ -15,6 +15,8 @@ const Recipe = ({navigation, dishes_I}) => {
     const [dishesName, setdishesName] = useState(dishes_I.title);
     const [dishesTime, setdishesTime] = useState(dishes_I.readyInMinutes);
     const [dishesCalories, setdishesCalories] = useState(null);
+
+    const [dishesDiet, setdishesDiet] = useState(dishes_I.diet);
     useEffect(() => {
         let text = dishes_I.summary;
         const oneServingSplit = text.split("<b>");
@@ -76,10 +78,7 @@ const Recipe = ({navigation, dishes_I}) => {
                 
                 <View>
                     <Text>
-                        {dishesTime} min
-                    </Text>
-                    <Text>
-                        Total
+                        {dishesDiet}
                     </Text>
                 </View>
             </View>
