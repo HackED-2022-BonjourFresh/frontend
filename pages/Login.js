@@ -79,7 +79,7 @@ const Login = ({navigation, props}) => {
 		}
 	}
 
-    const formChanged = () => {
+    const formChanged = (label, text) => {
         switch (label) {
             case 'username':
                 setUsername(text);
@@ -109,10 +109,12 @@ const Login = ({navigation, props}) => {
         console.log('send http request for login');
 
         axios.get(`https://localhost.com/login/${username}`).then(resp => {
+            console.log('test');
             if (resp.status === 200){
-                if (resp.status === 200){
-                    navigation.replace('Main', {username: resp.data.user});
-                }
+                console.log('success');
+                // if (resp.status === 200){
+                //     navigation.replace('Main', {username: resp.data.user});
+                // }
             }
         });
     }

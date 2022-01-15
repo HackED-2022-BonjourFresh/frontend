@@ -5,7 +5,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 
-// import WeekPlan from './pages/WeekPlan.js';
+
+import WeekPlan from './pages/WeekPlan.js';
 // import Week from './pages/Components/Week.js';
 import Home from './pages/Home.js';
 import Login from './pages/Login.js';
@@ -14,66 +15,19 @@ import Login from './pages/Login.js';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
+function MyTabs() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={Login} />
+      <Tab.Screen name="Plan" component={WeekPlan} />
+    </Tab.Navigator>
+  );
+}
+
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Login"
-          component={Login}
-          options={{
-            title: '',
-            headerStyle: {
-              height: '0px'
-            }
-          }}
-        />
-
-        {/*<Stack.Screen
-          name="Home"
-          component={Home}
-          options={{
-            title: '',
-            headerStyle: {
-              height: '0px'
-            }
-          }}
-        />*/}
-        
-        {/* <Stack.Screen
-          name="Recipe"
-          component={Recipe}
-          options={{
-            title: '',
-            headerStyle: {
-              height: '0px'
-            }
-          }}
-        />
-
-        <Stack.Screen
-          name="WeekPlan"
-          component={WeekPlan}
-          options={{
-            title: '',
-            headerStyle: {
-              height: '0px'
-            }
-          }}
-        />
-
-        <Stack.Screen
-          name="Week"
-          component={Week}
-          options={{
-            title: '',
-            headerStyle: {
-              height: '0px'
-            }
-          }}
-        /> */}
-
-      </Stack.Navigator>
+      <MyTabs />
     </NavigationContainer>
   );
 }

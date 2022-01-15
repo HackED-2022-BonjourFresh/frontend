@@ -5,6 +5,7 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import axios from 'axios';
 
 import RecipeCard from './Components/RecipeCard';
+import WeekPlan from './WeekPlan.js';
 
 const apiKey = '83edffb21ef341eabd82bc4580c72ea8';
 const recipes = require('../assets/recipes.json');
@@ -38,8 +39,7 @@ const Home = ({navigation, route}) => {
                     )
                 }
             </ScrollView>
-            <StatusBar style="auto" />
-        </View>
+        </View>  
     );
 }
 
