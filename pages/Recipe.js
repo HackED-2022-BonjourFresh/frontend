@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, ScrollView, Image } from 'react-native';
+import { Text, View, StyleSheet, ScrollView, Image, TextInput } from 'react-native';
 
 import {ProgressButton} from 'react-native-progress-button';
 import axios from 'axios';
@@ -27,8 +27,11 @@ const Recipe = ({navigation, route}) => {
     const [description, setDescription] = useState(null);
     const [steps, setSteps] = useState(route.params.recipe.analyzedInstructions[0].steps);
 
+    const [date, setDate] = useState('');
+
     useEffect(() => {
         let text = route.params.recipe.summary;
+        
         const oneServingSplit = text.split("<b>");
         console.log(oneServingSplit);
 
@@ -55,11 +58,9 @@ const Recipe = ({navigation, route}) => {
 		axios.post(`http://127.0.0.1:5000/register_recipe`,route.params.recipe)
         .then(res => {
             if (res.status === 200){
-                axios.post(`http://127.0.0.1:5000/recipes_for_user`,{recipe_name:route.params.recipe.title, date: "1/15/2022"})
+                axios.post(`http://127.0.0.1:5000/recipes_for_user`,{recipe_name:route.params.recipe.title, date})
                     .then(res =>{
-                        if (res.status === 200 || res.status === 400){
-                            navigation.goBack();
-                        }
+                        navigation.goBack();
                     });
             }
         });
@@ -102,7 +103,12 @@ const Recipe = ({navigation, route}) => {
                 <Text style={{fontWeight:'700', paddingTop: 10}}>Description</Text>
                 <Text style={{paddingTop: 10}}>{description}</Text>
             </View>
-
+            <TextInput
+                style={{height: 40}}
+                placeholder="Cooking Date DD/MM/YYYY"
+                onChangeText={text => setDate(text)}
+                defaultValue={date}
+            />
             <ProgressButton
                 buttonState='progress'
                 smoothly={true}
