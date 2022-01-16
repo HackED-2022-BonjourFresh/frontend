@@ -9,6 +9,8 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 200,
       }    
+
+      
 });
 
 const Recipe = ({navigation, route}) => {
@@ -20,8 +22,8 @@ const Recipe = ({navigation, route}) => {
 
     const [dishesDiet, setdishesDiet] = useState(route.params.recipe.diets);
 
-    const [description, setDescription] = useState(route.params.recipe.summary);
-    const [steps, setSteps] = useState(route.params.recipe.analyzedInstructions);
+    const [description, setDescription] = useState(null);
+    const [steps, setSteps] = useState(route.params.recipe.analyzedInstructions[0].steps);
 
     useEffect(() => {
         let text = route.params.recipe.summary;
@@ -38,7 +40,13 @@ const Recipe = ({navigation, route}) => {
                 setdishesCalories(number);
             }
         }
+        const noB = text.replaceAll('<b>', '');
+        const bBackB= noB.replaceAll('</b>', '');
+        console.log(bBackB);
+        const splitbBackB = bBackB.split("Try");
+        setDescription(splitbBackB[0]);
     }, []);
+
 
     return (
         <View>
@@ -92,6 +100,19 @@ const Recipe = ({navigation, route}) => {
             </View>
             <View>
                 <Text>Instructions</Text>
+                {
+                    steps.map(step => 
+                        <View>
+                            <Text>
+                                Step {step.number}
+                            </Text>
+                            <Text>
+                                {step.step}
+                            </Text>
+                        </View>
+                    )
+                }
+
             </View>
         </View>
     );
