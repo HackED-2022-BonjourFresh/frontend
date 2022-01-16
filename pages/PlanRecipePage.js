@@ -40,6 +40,18 @@ const Recipe = ({navigation, route}) => {
                 )
             }
 
+            {
+                instruction.map(ins => 
+                    <View>
+                        <Text style={{paddingTop: 10}}>
+                            {ins}
+                        </Text>
+                    </View>
+                )
+            }
+
+
+
         </View>
     );
 }
