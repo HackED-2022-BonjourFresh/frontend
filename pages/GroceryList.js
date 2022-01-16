@@ -49,7 +49,7 @@ export default function GroceryList() {
     }
 
     return (
-        <View>
+        <View style={{alignItems: 'center'}}>
             <View style={{flexDirection:"row"}}>
                 <Text style={nameHeader}>Name</Text>
                 <Text style={header}>Amount</Text>
