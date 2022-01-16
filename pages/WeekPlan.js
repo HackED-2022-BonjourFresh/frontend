@@ -30,7 +30,7 @@ export default function WeekPlan({navigation}) {
                                                 key={i}
                                                 title={d.recipe_name}
                                                 imageURL={d.image}
-                                                onClick={() => {}}
+                                                onClick={(i) => onRecipeCardClicked}
                                             />
                     )
                 }
