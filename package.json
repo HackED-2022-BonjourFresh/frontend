@@ -22,6 +22,8 @@
     "react-native-circular-progress-indicator": "^1.1.2",
     "react-native-date-picker": "^4.0.0",
     "react-native-elements": "^3.4.2",
+    "react-native-progress-button": "^1.0.3",
+    "react-native-really-awesome-button": "^1.6.0",
     "react-native-safe-area-context": "^3.2.0",
     "react-native-screens": "~3.4.0",
     "react-native-select-dropdown": "^1.1.0",

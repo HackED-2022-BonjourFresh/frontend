@@ -1,6 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, ScrollView, Image } from 'react-native';
+
+import {ProgressButton} from 'react-native-progress-button';
 import axios from 'axios';
 
 
@@ -47,6 +49,23 @@ const Recipe = ({navigation, route}) => {
         setDescription(splitbBackB[0]);
     }, []);
 
+    registerAdd  = () => {
+
+        console.log('sending http request to update current user');
+		await axios.post(`http://127.0.0.1:5000/register_recipe`,route.params.recipe)
+        .then(res => {
+            if (res.status === 200){
+            }
+        })
+
+        axios.post(`http://127.0.0.1:5000/recipes_for_user`,{recipe_name:route.params.title, date: "1/15/2022"})
+        .then(res =>{
+            if (res.status === 200){
+                navigation.replace('Main',{});
+            }
+        })
+
+    }
 
     return (
         <View style={{marginLeft:20, marginRight:20}}>
@@ -85,6 +104,14 @@ const Recipe = ({navigation, route}) => {
                 <Text style={{fontWeight:'700', paddingTop: 10}}>Description</Text>
                 <Text style={{paddingTop: 10}}>{description}</Text>
             </View>
+
+            <ProgressButton {...
+                buttonState='progress',
+                smoothly=true,
+                onPress={
+                    registerAdd
+                }}
+            />
             <View>
                 <Text style={{fontWeight:'700', paddingTop: 10}}>Instructions</Text>
                 {
