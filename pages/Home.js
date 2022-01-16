@@ -7,7 +7,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 
 import RecipeCard from './Components/RecipeCard';
 
-const apiKey = '83edffb21ef341eabd82bc4580c72ea8';
+const apiKey = '5defe6c72e9b4862bdf07074efa510e9';
 const recipes = require('../assets/recipes.json');
 
 const Home = ({navigation, route}) => {
