@@ -17,7 +17,7 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
-  const [isSignedIn, setIsSignedIn] = useState(true);
+  const [isSignedIn, setIsSignedIn] = useState(false);
 
   DeviceEventEmitter.addListener("event.loggedIn", (d) => {
     setIsSignedIn(true);
