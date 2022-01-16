@@ -23,14 +23,14 @@ export default function WeekPlan({navigation}) {
 
                     let nextMonday = new Date(monday.getFullYear(), monday.getMonth(), monday.getDate() + 7);
 
-                    return dateObject < nextMonday;
+                    return dateObject < nextMonday && dateObject >= monday;
                 }));
             });
         }, [])
       );    
 
     const onRecipeCardClicked = (i) => {
-        navigation.navigate('Recipe', { recipe: dishes[i] });
+        navigation.navigate('PlanRecipe', { recipe: weeklyRecipes[i] });
     }
 
     const monthNames = ["Jan", "Feb", "March", "April", "May", "June",
@@ -51,7 +51,7 @@ export default function WeekPlan({navigation}) {
 
             let nextMonday = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate() + 7);
 
-            return dateObject < nextMonday;
+            return dateObject < nextMonday && dateObject >= newDate;
         }));
     }
 
@@ -63,7 +63,7 @@ export default function WeekPlan({navigation}) {
 
             let nextMonday = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate() + 7);
 
-            return dateObject < nextMonday;
+            return dateObject < nextMonday && dateObject >= newDate;
         }));
     }
     
@@ -89,7 +89,7 @@ export default function WeekPlan({navigation}) {
                                                 key={i}
                                                 title={d.recipe_name}
                                                 imageURL={d.image}
-                                                onClick={(i) => onRecipeCardClicked}
+                                                onClick={() => onRecipeCardClicked(i)}
                                             />
                     )
                 }
