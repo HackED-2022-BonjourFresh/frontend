@@ -2,27 +2,11 @@ import React, {useEffect} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function GroceryList() {
-    const ingredients = [
-    {
-        name: 'milk',
-        amount: 8,
-        unit: 'cups'
-    },
-    {
-        name: 'butter',
-        amount: 2,
-        unit: 'cups'
-    },
-    {
-        name: 'beef',
-        amount: 1,
-        unit: 'lbs'
-    },
-    {
-        name: 'potatoe',
-        amount: 5,
-        unit: 'lbs'
-    }];
+
+    const [ingredients, setIngredients] = useState([]);
+
+    const [keys,setKeys] = useState([]);
+
 
     const header = {
         fontWeight: "bold",
@@ -48,6 +32,19 @@ export default function GroceryList() {
         width: 150
     }
 
+    useEffect(() => {
+        axios.get(`http://127.0.0.1:5000/grocery_list_for_user`)
+            .then(res => {
+
+                const jsonData = res.data
+                var result = Object.keys(jsonData).map(function(k) {
+                    return jsonData[k];
+                });
+                setIngredients(result);
+                setKeys(Object.keys(jsonData));
+            });
+    }, []);
+
     return (
         <View style={{alignItems: 'center'}}>
             <View style={{flexDirection:"row"}}>
@@ -58,7 +55,12 @@ export default function GroceryList() {
             {
                 ingredients.map((item, i) => {
                     return <View style={{flexDirection:"row"}}>
-                        <Text style={nameCol}>{item.name}</Text>
+                        <Text style={nameCol}>
+                            {
+                                item[0]
+                            }
+                        </Text>
+                        
                         <Text style={col}>{item.amount}</Text>
                         <Text style={col}>{item.unit}</Text>
                     </View>;
