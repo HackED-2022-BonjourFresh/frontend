@@ -33,7 +33,6 @@ const Recipe = ({navigation, route}) => {
         let text = route.params.recipe.summary;
         
         const oneServingSplit = text.split("<b>");
-        console.log(oneServingSplit);
 
         for (var i = 0; i < oneServingSplit.length; i++) {
             if (oneServingSplit[i].includes("calories")){
@@ -47,7 +46,6 @@ const Recipe = ({navigation, route}) => {
         }
         const noB = text.replaceAll('<b>', '');
         const bBackB= noB.replaceAll('</b>', '');
-        console.log(bBackB);
         const splitbBackB = bBackB.split("Try");
         setDescription(splitbBackB[0]);
     }, []);
@@ -105,7 +103,7 @@ const Recipe = ({navigation, route}) => {
             </View>
             <TextInput
                 style={{height: 40}}
-                placeholder="Cooking Date DD/MM/YYYY"
+                placeholder="Cooking Date MM/DD/YYYY"
                 onChangeText={text => setDate(text)}
                 defaultValue={date}
             />
