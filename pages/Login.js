@@ -91,7 +91,7 @@ const Login = ({navigation, props}) => {
 
     const signUp = () => {
         console.log('sending http request to make new account');
-        axios.post("http://127.0.0.1:5000/sign_up", {username})
+        axios.post("https://bonjour-fresh-api.azurewebsites.net/sign_up", {username})
             .then(res => {
                 if (res.status === 200){
                     console.log('signed up');
@@ -101,7 +101,7 @@ const Login = ({navigation, props}) => {
 
     const login = () => {
         console.log('send http request for login');
-        axios.post(`http://127.0.0.1:5000/login`, {username}).then(resp => {
+        axios.post(`https://bonjour-fresh-api.azurewebsites.net/login`, {username}).then(resp => {
             if (resp.status === 200){
                 DeviceEventEmitter.emit("event.loggedIn");
             }

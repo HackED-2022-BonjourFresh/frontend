@@ -36,7 +36,7 @@ export default function GroceryList() {
 
     useFocusEffect(
         React.useCallback(() => {
-            axios.get(`http://127.0.0.1:5000/grocery_list_for_user`)
+            axios.get(`https://bonjour-fresh-api.azurewebsites.net/grocery_list_for_user`)
             .then(res => {
 
                 const jsonData = res.data

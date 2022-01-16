@@ -44,8 +44,9 @@ const Recipe = ({navigation, route}) => {
                 setdishesCalories(number);
             }
         }
-        const noB = text.replaceAll('<b>', '');
-        const bBackB= noB.replaceAll('</b>', '');
+        let noB = text.split('<b>').join(';')
+        let bBackB = noB.split('</b>').join('');
+
         const splitbBackB = bBackB.split("Try");
         setDescription(splitbBackB[0]);
     }, []);
@@ -53,10 +54,10 @@ const Recipe = ({navigation, route}) => {
     registerAdd  = () => {
 
         console.log('sending http request to update current user');
-		axios.post(`http://127.0.0.1:5000/register_recipe`,route.params.recipe)
+		axios.post(`https://bonjour-fresh-api.azurewebsites.net/register_recipe`,route.params.recipe)
         .then(res => {
             if (res.status === 200){
-                axios.post(`http://127.0.0.1:5000/recipes_for_user`,{recipe_name:route.params.recipe.title, date})
+                axios.post(`https://bonjour-fresh-api.azurewebsites.net/recipes_for_user`,{recipe_name:route.params.recipe.title, date})
                     .then(res =>{
                         navigation.goBack();
                     });
@@ -67,7 +68,7 @@ const Recipe = ({navigation, route}) => {
     return (
         <ScrollView style={{marginLeft:20, marginRight:20, marginBottom: 50}}>
             <Image style={styles.recipeImage} source={{uri: dishesImage}}/>
-            <Text style={{fontWeight:'800', fontSize: 40, fontStyle:"monospace"}}>{dishesName}</Text>
+            <Text style={{fontWeight:'800', fontSize: 40, fontStyle:"normal"}}>{dishesName}</Text>
 
             <View style={{flexDirection:"row", justifyContent: 'center',alignItems: 'center', paddingTop: 10}}>
                 <View style={{alignItems: 'center', width:100}}>
@@ -118,8 +119,8 @@ const Recipe = ({navigation, route}) => {
             <View>
                 <Text style={{fontWeight:'700', paddingTop: 10}}>Instructions</Text>
                 {
-                    steps.map(step => 
-                        <View>
+                    steps.map((step,i) => 
+                        <View key={i}>
                             <Text style={{fontWeight:'700', paddingTop: 10}}>
                                 Step {step.number}
                             </Text>

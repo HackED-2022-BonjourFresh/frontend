@@ -8,9 +8,7 @@ const styles = StyleSheet.create({
     recipeImage: {
         width: '100%',
         height: 200,
-      }    
-
-
+      }
 });
 
 const PlanRecipe = ({navigation, route}) => {
@@ -40,7 +38,7 @@ const PlanRecipe = ({navigation, route}) => {
                             {ingredient.name}
                         </Text>
                         <Text style={{paddingTop: 10}}>
-                            {ingredient.quantity}
+                            {ingredient.amount} {ingredient.unit}
                         </Text>
                     </View>
                 )

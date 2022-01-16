@@ -14,7 +14,7 @@ export default function WeekPlan({navigation}) {
 
     useFocusEffect(
         React.useCallback(() => {
-            axios.get(`http://127.0.0.1:5000/recipes_for_user`)
+            axios.get(`https://bonjour-fresh-api.azurewebsites.net/recipes_for_user`)
             .then(res => {
                 setRecipes(res.data);
 
