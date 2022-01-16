@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { StyleSheet, ScrollView, Text, View } from 'react-native';
+import { StyleSheet, ScrollView, Text, View, Button } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import _ from 'lodash';
 
@@ -21,9 +21,9 @@ export default function WeekPlan({navigation}) {
                 setWeeklyRecipes(_.filter(res.data, d => {
                     let dateObject = new Date(d.date);
 
-                    let nextMonday = Date.parse(new Date(monday.getFullYear(), monday.getMonth(), monday.getDate() + 7));
+                    let nextMonday = new Date(monday.getFullYear(), monday.getMonth(), monday.getDate() + 7);
 
-                    return dateObject > nextMonday;
+                    return dateObject < nextMonday;
                 }));
             });
         }, [])
@@ -42,12 +42,46 @@ export default function WeekPlan({navigation}) {
             date.setHours(-24 * (day - 1)); 
         return date;
     }
+
+    const prevBtnClicked = () => {
+        const newDate = new Date(monday.getFullYear(), monday.getMonth(), monday.getDate() - 7);
+        setMonday(newDate);
+        setWeeklyRecipes(_.filter(recipes, d => {
+            let dateObject = new Date(d.date);
+
+            let nextMonday = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate() + 7);
+
+            return dateObject < nextMonday;
+        }));
+    }
+
+    const nextBtnClicked = () => {
+        const newDate = new Date(monday.getFullYear(), monday.getMonth(), monday.getDate() + 7);
+        setMonday(newDate);
+        setWeeklyRecipes(_.filter(recipes, d => {
+            let dateObject = new Date(d.date);
+
+            let nextMonday = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate() + 7);
+
+            return dateObject < nextMonday;
+        }));
+    }
     
     return (
         <View>
-            <View style={{alignItems: 'center'}}>
-                <Text>Week Of </Text>
-                <Text style={{fontWeight: 'bold', fontSize: 25}}>{monthNames[monday.getMonth()]} {monday.getDate()}</Text>
+            <View style={{flexDirection:"row", marginLeft: 'auto', marginRight: 'auto', marginTop: 10}}>
+                <Button
+                    title="Prev Week"
+                    onPress={() => prevBtnClicked()}
+                />
+                <View style={{alignItems: 'center'}}>
+                    <Text>Week Of </Text>
+                    <Text style={{fontWeight: 'bold', fontSize: 25}}>{monthNames[monday.getMonth()]} {monday.getDate()}</Text>
+                </View>
+                <Button
+                    title="Next Week"
+                    onPress={() => nextBtnClicked()}
+                />
             </View>
             <ScrollView>
                 {
