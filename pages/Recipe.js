@@ -26,11 +26,9 @@ const Recipe = ({navigation, dishes_I}) => {
                 // remove is a list, beginning contains "___ calories"
                 const finalStringArray = removeB[0].split(" ");
                 const number = finalStringArray[0]
-                setdishesCalories(number); 
+                setdishesCalories(number);
             }
-
         }
-        
     }, []);
 
     return (
