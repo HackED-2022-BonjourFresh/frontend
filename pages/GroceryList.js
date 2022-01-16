@@ -1,5 +1,7 @@
-import React, {useEffect} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
+import axios from 'axios';
 
 export default function GroceryList() {
 
@@ -32,8 +34,9 @@ export default function GroceryList() {
         width: 150
     }
 
-    useEffect(() => {
-        axios.get(`http://127.0.0.1:5000/grocery_list_for_user`)
+    useFocusEffect(
+        React.useCallback(() => {
+            axios.get(`http://127.0.0.1:5000/grocery_list_for_user`)
             .then(res => {
 
                 const jsonData = res.data
@@ -43,29 +46,32 @@ export default function GroceryList() {
                 setIngredients(result);
                 setKeys(Object.keys(jsonData));
             });
-    }, []);
+        }, [])
+      );
 
     return (
         <View style={{alignItems: 'center'}}>
-            <View style={{flexDirection:"row"}}>
-                <Text style={nameHeader}>Name</Text>
-                <Text style={header}>Amount</Text>
-                <Text style={header}>Unit</Text>
-            </View>
-            {
-                ingredients.map((item, i) => {
-                    return <View style={{flexDirection:"row"}}>
-                        <Text style={nameCol}>
-                            {
-                                item[0]
-                            }
-                        </Text>
-                        
-                        <Text style={col}>{item.amount}</Text>
-                        <Text style={col}>{item.unit}</Text>
-                    </View>;
-                })
-            }
+            <ScrollView>
+                <View style={{flexDirection:"row"}}>
+                    <Text style={nameHeader}>Name</Text>
+                    <Text style={header}>Amount</Text>
+                    <Text style={header}>Unit</Text>
+                </View>
+                {
+                    ingredients.map((item, i) => {
+                        return <View key={i} style={{flexDirection:"row"}}>
+                            <Text style={nameCol}>
+                                {
+                                    item.name
+                                }
+                            </Text>
+                            
+                            <Text style={col}>{item.amount}</Text>
+                            <Text style={col}>{item.unit}</Text>
+                        </View>;
+                    })
+                }
+            </ScrollView>
         </View>
     )
 }
