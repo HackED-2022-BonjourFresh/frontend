@@ -24,12 +24,12 @@ function MyTabs() {
 	});
 
   return (
-    <Tab.Navigator screenOptions={{tabBarIconStyle: { display: "none" }}}>
+    <Tab.Navigator>
       { isSignedIn 
         ? (<>
-            <Tab.Screen name="Home" component={Home} screenOptions={{tabBarIconStyle: { display: "none" }}}/>
-            <Tab.Screen name="Plan" component={WeekPlan} screenOptions={{tabBarIconStyle: { display: "none" }}}/>
-            <Tab.Screen name="Grocery" component={GroceryList} screenOptions={{tabBarIconStyle: { display: "none" }}}/>
+            <Tab.Screen name="Home" component={Home} />
+            <Tab.Screen name="Plan" component={WeekPlan} />
+            <Tab.Screen name="Grocery" component={GroceryList} />
           </>)
         : <Tab.Screen name="Login" component={Login} />
       }
