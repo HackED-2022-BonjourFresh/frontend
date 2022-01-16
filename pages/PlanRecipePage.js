@@ -8,7 +8,6 @@ import axios from 'axios';
 const PlanRecipe = ({navigation, route}) => {
     const [dishesImage, setdishesImage] = useState(route.params.recipe.image);
     const [date, setDate] = useState(route.params.recipe.date);
-    const [dishesName, setdishesName] = useState(route.params.recipe.title);
     const [ingredients, setIngredients] = useState(route.params.recipe.ingredients);
     const [instruction, setInstruction] = useState();
     const [recipeName, setRecipeName] = useState(route.params.recipe.recipe_name);
@@ -24,7 +23,7 @@ const PlanRecipe = ({navigation, route}) => {
     return (
         <ScrollView style={{marginLeft:20, marginRight:20}}>
             <Image style={styles.recipeImage} source={dishesImage}/>
-            <Text style={{fontWeight:'800', fontSize: '40', fontStyle:"monospace"}}>{dishesName}</Text>
+            <Text style={{fontWeight:'800', fontSize: '40', fontStyle:"monospace"}}>{recipeName}</Text>
             <Text style={{fontWeight:'300', fontSize: '10', fontStyle:"monospace"}}>{date}</Text>
             
             {
