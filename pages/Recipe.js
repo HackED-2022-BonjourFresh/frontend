@@ -4,7 +4,9 @@ import axios from 'axios';
 
 //import { Container, Navbar } from 'navbar-native';
 
-const Recipe = ({navigation, dishes_I}) => {
+const Recipe = ({navigation, route}) => {
+
+    console.log(route.params.recipe);
 
     // recipeIndex = i in dishes[i]
     const [dishesID, setdishesID] = useState(dishes_I.id);
@@ -33,7 +35,6 @@ const Recipe = ({navigation, dishes_I}) => {
 
     return (
         <View>
-
             <Container>
                 <Navbar
                     title={"Recipe Details"}
