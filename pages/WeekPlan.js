@@ -26,7 +26,7 @@ export default function WeekPlan({navigation}) {
                     return dateObject < nextMonday && dateObject >= monday;
                 }));
             });
-        }, [])
+        }, [monday])
       );    
 
     const onRecipeCardClicked = (i) => {
