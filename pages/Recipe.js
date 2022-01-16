@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
         height: 200,
       }    
 
-      
+
 });
 
 const Recipe = ({navigation, route}) => {
@@ -49,12 +49,12 @@ const Recipe = ({navigation, route}) => {
 
 
     return (
-        <View>
-            <Text style={{fontWeight:'800', fontSize: '5'}}>{dishesName}</Text>
+        <View style={{marginLeft:20, marginRight:20}}>
             <Image style={styles.recipeImage} source={dishesImage}/>
+            <Text style={{fontWeight:'800', fontSize: '10', fontStyle:"monospace"}}>{dishesName}</Text>
 
-            <View style={{flexDirection:"row", alignItems: 'center', paddingTop: 10}}>
-                <View>
+            <View style={{flexDirection:"row", justifyContent: 'center',alignItems: 'center', paddingTop: 10}}>
+                <View style={{alignItems: 'center', width:100}}>
                     <Text>
                         {dishesTime} min
                     </Text>
@@ -63,7 +63,7 @@ const Recipe = ({navigation, route}) => {
                     </Text>
                 </View>
                 
-                <View>
+                <View style={{alignItems: 'center', width:100}}>
                     <Text>
                         {dishesCalories}
                     </Text>
@@ -72,7 +72,7 @@ const Recipe = ({navigation, route}) => {
                     </Text>
                 </View>                
                 
-                <View>
+                <View style={{alignItems: 'center', width:100}}>
                     <Text>
                         {dishesDiet}
                     </Text>
@@ -82,18 +82,18 @@ const Recipe = ({navigation, route}) => {
                 </View>
             </View>
             <View>
-                <Text>Description</Text>
-                <Text>{description}</Text>
+                <Text style={{fontWeight:'700', paddingTop: 10}}>Description</Text>
+                <Text style={{paddingTop: 10}}>{description}</Text>
             </View>
             <View>
-                <Text>Instructions</Text>
+                <Text style={{fontWeight:'700', paddingTop: 10}}>Instructions</Text>
                 {
                     steps.map(step => 
                         <View>
-                            <Text>
+                            <Text style={{fontWeight:'700', paddingTop: 10}}>
                                 Step {step.number}
                             </Text>
-                            <Text>
+                            <Text style={{paddingTop: 10}}>
                                 {step.step}
                             </Text>
                         </View>
