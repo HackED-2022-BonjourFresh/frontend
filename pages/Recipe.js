@@ -13,7 +13,9 @@ const styles = StyleSheet.create({
       }    
 });
 
-const Recipe = ({navigation, dishes_I}) => {
+const Recipe = ({navigation, route}) => {
+
+    console.log(route.params.recipe);
 
     // recipeIndex = i in dishes[i]
     // const [dishesID, setdishesID] = useState(dishes_I.id);

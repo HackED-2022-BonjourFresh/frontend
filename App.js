@@ -28,9 +28,8 @@ function MyTabs() {
       { isSignedIn 
         ? (<>
             <Tab.Screen name="Home" component={Home} />
-            <Tab.Screen name="Recipe" component={Recipe}/>
             <Tab.Screen name="Plan" component={WeekPlan} />
-            {/* <Tab.Screen name="Grocery" component={GroceryList} /> */}
+            <Tab.Screen name="Grocery" component={GroceryList} />
           </>)
         : <Tab.Screen name="Login" component={Login} />
       }
@@ -41,7 +40,10 @@ function MyTabs() {
 export default function App() {
   return (
     <NavigationContainer>
-      <MyTabs />
+      <Stack.Navigator>
+        <Stack.Screen name="Nav" component={MyTabs}/>
+        <Stack.Screen name="Recipe" component={Recipe}/>
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
