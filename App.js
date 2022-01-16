@@ -14,6 +14,7 @@ import Home from './pages/Home.js';
 import Login from './pages/Login.js';
 import Recipe from './pages/Recipe.js';
 import GroceryList from './pages/GroceryList.js';
+import PlanRecipe from './pages/PlanRecipePage.js';
 // import Recipe from './pages/Recipe.js';
 
 const Stack = createNativeStackNavigator();
@@ -46,6 +47,7 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen name="Main" component={MyTabs} options={{ headerShown: false }}/>
         <Stack.Screen name="Recipe" component={Recipe}/>
+        <Tab.Screen name="PlanRecipe" component={PlanRecipe} />
       </Stack.Navigator>
     </NavigationContainer>
   );

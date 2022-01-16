@@ -5,7 +5,7 @@ import {ProgressButton} from 'react-native-progress-button';
 import axios from 'axios';
 
 
-const Recipe = ({navigation, route}) => {
+const PlanRecipe = ({navigation, route}) => {
     const [dishesImage, setdishesImage] = useState(route.params.recipe.image);
     const [date, setDate] = useState(route.params.recipe.date);
     const [dishesName, setdishesName] = useState(route.params.recipe.title);
@@ -56,4 +56,4 @@ const Recipe = ({navigation, route}) => {
     );
 }
 
-export default Recipe;
+export default PlanRecipe;
