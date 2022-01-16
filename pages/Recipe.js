@@ -50,21 +50,8 @@ const Recipe = ({navigation, route}) => {
 
     return (
         <View>
-
-            {/* <Container>
-                <Navbar
-                    title={"Recipe Details"}
-                    left={{
-                        icon: "ios-arrow-back",
-                        label: "Back",
-                        onPress: () => {alert('Go back!')}
-                    }}
-
-                />
-            </Container> */}
-
+            <Text style={{fontWeight:'800', fontSize: '5'}}>{dishesName}</Text>
             <Image style={styles.recipeImage} source={dishesImage}/>
-            <Text>{dishesName}</Text>
 
             <View style={{flexDirection:"row", alignItems: 'center', paddingTop: 10}}>
                 <View>
