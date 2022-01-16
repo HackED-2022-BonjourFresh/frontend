@@ -21,6 +21,7 @@ const Home = ({navigation, route}) => {
 
     const onRecipeCardClicked = (i) => {
         console.log(dishes[i]);
+        navigation.navigate('Recipe', { name: 'Jane' });
     }
 
     return (
