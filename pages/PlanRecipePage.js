@@ -30,8 +30,8 @@ const PlanRecipe = ({navigation, route}) => {
     return (
         <ScrollView style={{marginLeft:20, marginRight:20, marginBottom: 50}}>
             <Image style={styles.recipeImage} source={{uri:dishesImage}}/>
-            <Text style={{fontWeight:'800', fontSize: 40, fontStyle:"monospace"}}>{recipeName}</Text>
-            <Text style={{fontWeight:'300', fontSize: 10, fontStyle:"monospace"}}>{date}</Text>
+            <Text style={{fontWeight:'800', fontSize: 40, fontStyle:"normal"}}>{recipeName}</Text>
+            <Text style={{fontWeight:'300', fontSize: 10, fontStyle:"normal"}}>{date}</Text>
             
             {
                 ingredients.map((ingredient, i) => 

@@ -1,7 +1,7 @@
 // Boilerplate
 import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, Button } from 'react-native';
 import axios from 'axios';
 
 import RecipeCard from './Components/RecipeCard';
@@ -23,6 +23,13 @@ const Home = ({navigation, route}) => {
         navigation.navigate('Recipe', { recipe: dishes[i] });
     }
 
+    const loadMore = () => {
+        axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=10`)
+            .then(res => {
+                setDishes(dishes.concat(res.data.recipes));
+            });
+    }
+
     return (
         <View style={StyleSheet.container}>
             <ScrollView>
@@ -37,8 +44,11 @@ const Home = ({navigation, route}) => {
                                             />
                     )
                 }
+                <Button
+                    title="More"
+                    onPress={() => loadMore()}
+                />
             </ScrollView>
-            <StatusBar style="auto" />
         </View>
     );
 }

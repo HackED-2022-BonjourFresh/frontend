@@ -25,7 +25,7 @@ const Recipe = ({navigation, route}) => {
     const [dishesDiet, setdishesDiet] = useState(route.params.recipe.diets);
 
     const [description, setDescription] = useState(null);
-    const [steps, setSteps] = useState(route.params.recipe.analyzedInstructions[0].steps);
+    const [steps, setSteps] = useState(route.params.recipe.analyzedInstructions[0] ? route.params.recipe.analyzedInstructions[0].steps : []);
 
     const [date, setDate] = useState('');
 

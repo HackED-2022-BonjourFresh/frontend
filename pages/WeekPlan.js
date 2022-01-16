@@ -68,7 +68,7 @@ export default function WeekPlan({navigation}) {
     }
     
     return (
-        <View>
+        <View style={{marginBottom: 60}}>
             <View style={{flexDirection:"row", marginLeft: 'auto', marginRight: 'auto', marginTop: 10}}>
                 <Button
                     title="Prev Week"
