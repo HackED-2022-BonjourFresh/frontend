@@ -21,7 +21,6 @@ const PlanRecipe = ({navigation, route}) => {
     const [recipeName, setRecipeName] = useState(route.params.recipe.recipe_name);
 
     useEffect(() => {
-        console.log(route.params.recipe);
         let instructions = route.params.recipe.instruction;
 
         const splitInstructions = instructions.split("\n");
@@ -35,8 +34,8 @@ const PlanRecipe = ({navigation, route}) => {
             <Text style={{fontWeight:'300', fontSize: '10', fontStyle:"monospace"}}>{date}</Text>
             
             {
-                ingredients.map(ingredient => 
-                    <View style={{flexDirection: 'row'}}>
+                ingredients.map((ingredient, i) => 
+                    <View key={i} style={{flexDirection: 'row'}}>
                         <Text style={{fontWeight:'700', paddingTop: 10, width: 180}}>
                             {ingredient.name}
                         </Text>
@@ -48,8 +47,8 @@ const PlanRecipe = ({navigation, route}) => {
             }
             <Text style={{paddingTop: 50, fontWeight: '800'}}>Instructions</Text>
             {
-                instruction.map(ins => 
-                    <View>
+                instruction.map((ins, i) => 
+                    <View key={i}>
                         <Text style={{paddingTop: 10}}>
                             {ins}
                         </Text>

@@ -7,17 +7,17 @@ import axios from 'axios';
 import RecipeCard from './Components/RecipeCard';
 
 const apiKey = '83edffb21ef341eabd82bc4580c72ea8';
-const recipes = require('../assets/recipes.json');
+// const recipes = require('../assets/recipes.json');
 
 const Home = ({navigation, route}) => {
-    const [dishes, setDishes] = useState(recipes);
+    const [dishes, setDishes] = useState([]);
 
-    // useEffect(() => {
-    //     axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=10`)
-    //         .then(res => {
-    //             setDishes(res.data.results);
-    //         });
-    // }, []);
+    useEffect(() => {
+        axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=10`)
+            .then(res => {
+                setDishes(res.data.recipes);
+            });
+    }, []);
 
     const onRecipeCardClicked = (i) => {
         navigation.navigate('Recipe', { recipe: dishes[i] });
