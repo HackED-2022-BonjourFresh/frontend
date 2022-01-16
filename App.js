@@ -28,7 +28,7 @@ function MyTabs() {
         ? (<>
             <Tab.Screen name="Home" component={Home} />
             <Tab.Screen name="Plan" component={WeekPlan} />
-            <Tab.Screen name="Grocery" component={GroceryList} />
+            {/* <Tab.Screen name="Grocery" component={GroceryList} /> */}
           </>)
         : <Tab.Screen name="Login" component={Login} />
       }
