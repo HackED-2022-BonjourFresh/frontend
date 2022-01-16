@@ -94,7 +94,7 @@ const Login = ({navigation, props}) => {
         axios.post("https://bonjour-fresh-api.azurewebsites.net/sign_up", {username})
             .then(res => {
                 if (res.status === 200){
-                    console.log('signed up');
+                    DeviceEventEmitter.emit("event.loggedIn"); 
                 }
             }); // Change this later
     }
