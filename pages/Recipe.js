@@ -65,9 +65,9 @@ const Recipe = ({navigation, route}) => {
     }
 
     return (
-        <ScrollView style={{marginLeft:20, marginRight:20}}>
+        <ScrollView style={{marginLeft:20, marginRight:20, marginBottom: 50}}>
             <Image style={styles.recipeImage} source={{uri: dishesImage}}/>
-            <Text style={{fontWeight:'800', fontSize: '10', fontStyle:"monospace"}}>{dishesName}</Text>
+            <Text style={{fontWeight:'800', fontSize: '40', fontStyle:"monospace"}}>{dishesName}</Text>
 
             <View style={{flexDirection:"row", justifyContent: 'center',alignItems: 'center', paddingTop: 10}}>
                 <View style={{alignItems: 'center', width:100}}>

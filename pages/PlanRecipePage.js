@@ -29,15 +29,15 @@ const PlanRecipe = ({navigation, route}) => {
     },[]);
 
     return (
-        <ScrollView style={{marginLeft:20, marginRight:20}}>
+        <ScrollView style={{marginLeft:20, marginRight:20, marginBottom: 50}}>
             <Image style={styles.recipeImage} source={{uri:dishesImage}}/>
             <Text style={{fontWeight:'800', fontSize: '40', fontStyle:"monospace"}}>{recipeName}</Text>
             <Text style={{fontWeight:'300', fontSize: '10', fontStyle:"monospace"}}>{date}</Text>
             
             {
                 ingredients.map(ingredient => 
-                    <View>
-                        <Text style={{fontWeight:'700', paddingTop: 10}}>
+                    <View style={{flexDirection: 'row'}}>
+                        <Text style={{fontWeight:'700', paddingTop: 10, width: 180}}>
                             {ingredient.name}
                         </Text>
                         <Text style={{paddingTop: 10}}>
@@ -46,7 +46,7 @@ const PlanRecipe = ({navigation, route}) => {
                     </View>
                 )
             }
-
+            <Text style={{paddingTop: 50, fontWeight: '800'}}>Instructions</Text>
             {
                 instruction.map(ins => 
                     <View>
