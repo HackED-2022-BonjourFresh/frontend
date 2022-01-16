@@ -41,7 +41,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Nav" component={MyTabs}/>
+        <Stack.Screen name="Main" component={MyTabs} options={{ headerShown: false }}/>
         <Stack.Screen name="Recipe" component={Recipe}/>
       </Stack.Navigator>
     </NavigationContainer>

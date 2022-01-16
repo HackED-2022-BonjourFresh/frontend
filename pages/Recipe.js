@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import { Text, View, StyleSheet, ScrollView, Image } from 'react-native';
 import axios from 'axios';
 
-import { Container, Navbar } from 'navbar-native';
-
 
 const styles = StyleSheet.create({
     recipeImage: {
@@ -38,8 +36,8 @@ const Recipe = ({navigation, route}) => {
     const [description, setDescription] = useState("Slow Cooker Red Beans and Rice might be just the main course you are searching for. This gluten free recipe serves 5 and costs");
     const [steps, setSteps] = useState([]);
 
-    useEffect(() => {
-    }, []);
+    // useEffect(() => {
+    // }, []);
 
     // useEffect(() => {
     //     let text = dishes_I.summary;
@@ -113,9 +111,6 @@ const Recipe = ({navigation, route}) => {
             <View>
                 <Text>Instructions</Text>
             </View>
-
-
-
         </View>
     );
 }
