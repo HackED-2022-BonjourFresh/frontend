@@ -9,7 +9,7 @@ import WeekPlan from './pages/WeekPlan.js';
 // import Week from './pages/Components/Week.js';
 import Home from './pages/Home.js';
 import Login from './pages/Login.js';
-// import Recipe from './pages/Recipe.js';
+import Recipe from './pages/Recipe.js';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -26,6 +26,7 @@ function MyTabs() {
       { isSignedIn 
         ? (<>
             <Tab.Screen name="Home" component={Home} />
+            <Tab.Screen name="Recipe" component={Recipe}/>
             <Tab.Screen name="Plan" component={WeekPlan} />
           </>)
         : <Tab.Screen name="Login" component={Login} />
