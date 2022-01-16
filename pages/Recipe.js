@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, ScrollView, Image } from 'react-native';
 import axios from 'axios';
 
@@ -12,51 +12,33 @@ const styles = StyleSheet.create({
 });
 
 const Recipe = ({navigation, route}) => {
+    const [dishesID, setdishesID] = useState(route.params.recipe.id);
+    const [dishesImage, setdishesImage] = useState(route.params.recipe.image);
+    const [dishesName, setdishesName] = useState(route.params.recipe.title);
+    const [dishesTime, setdishesTime] = useState(route.params.recipe.readyInMinutes);
+    const [dishesCalories, setdishesCalories] = useState("");
 
-    console.log(route.params.recipe);
+    const [dishesDiet, setdishesDiet] = useState(route.params.recipe.diets);
 
-    // recipeIndex = i in dishes[i]
-    // const [dishesID, setdishesID] = useState(dishes_I.id);
-    // const [dishesImage, setdishesImage] = useState(dishes_I.image);
-    // const [dishesName, setdishesName] = useState(dishes_I.title);
-    // const [dishesTime, setdishesTime] = useState(dishes_I.readyInMinutes);
-    // const [dishesCalories, setdishesCalories] = useState(null);
+    const [description, setDescription] = useState(route.params.recipe.summary);
+    const [steps, setSteps] = useState(route.params.recipe.analyzedInstructions);
 
-    // const [dishesDiet, setdishesDiet] = useState(dishes_I.diet);
+    useEffect(() => {
+        let text = route.params.recipe.summary;
+        const oneServingSplit = text.split("<b>");
+        console.log(oneServingSplit);
 
-
-    const [dishesID, setdishesID] = useState(123456);
-    const [dishesImage, setdishesImage] = useState("https://spoonacular.com/recipeImages/715493-556x370.jpg");
-    const [dishesName, setdishesName] = useState("Slow Cooker Red Beans and Rice");
-    const [dishesTime, setdishesTime] = useState("45");
-    const [dishesCalories, setdishesCalories] = useState("639");
-
-    const [dishesDiet, setdishesDiet] = useState("Ketogenic");
-
-    const [description, setDescription] = useState("Slow Cooker Red Beans and Rice might be just the main course you are searching for. This gluten free recipe serves 5 and costs");
-    const [steps, setSteps] = useState([]);
-
-    // useEffect(() => {
-    // }, []);
-
-    // useEffect(() => {
-    //     let text = dishes_I.summary;
-    //     const oneServingSplit = text.split("<b>");
-
-    //     for (var i = 0; i < oneServingSplit.length; i++) {
-    //         console.log(oneServingSplit[i]);
-    //         if (oneServingSplit[i].includes("calories")){
-    //             // Split by </b>
-    //             const removeB = oneServingSplit[i].split("</b>");
-    //             // remove is a list, beginning contains "___ calories"
-    //             const finalStringArray = removeB[0].split(" ");
-    //             const number = finalStringArray[0]
-    //             setdishesCalories(number);
-    //         }
-    //     }
-
-    
-    // }, []);
+        for (var i = 0; i < oneServingSplit.length; i++) {
+            if (oneServingSplit[i].includes("calories")){
+                // Split by </b>
+                const removeB = oneServingSplit[i].split("</b>");
+                // remove is a list, beginning contains "___ calories"
+                const finalStringArray = removeB[0].split(" ");
+                const number = finalStringArray[0]
+                setdishesCalories(number);
+            }
+        }
+    }, []);
 
     return (
         <View>
