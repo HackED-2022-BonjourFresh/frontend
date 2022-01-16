@@ -52,24 +52,22 @@ const Recipe = ({navigation, route}) => {
     registerAdd  = () => {
 
         console.log('sending http request to update current user');
-		await axios.post(`http://127.0.0.1:5000/register_recipe`,route.params.recipe)
+		axios.post(`http://127.0.0.1:5000/register_recipe`,route.params.recipe)
         .then(res => {
             if (res.status === 200){
+                axios.post(`http://127.0.0.1:5000/recipes_for_user`,{recipe_name:route.params.recipe.title, date: "1/15/2022"})
+                    .then(res =>{
+                        if (res.status === 200 || res.status === 400){
+                            navigation.goBack();
+                        }
+                    });
             }
-        })
-
-        axios.post(`http://127.0.0.1:5000/recipes_for_user`,{recipe_name:route.params.title, date: "1/15/2022"})
-        .then(res =>{
-            if (res.status === 200){
-                navigation.replace('Main',{});
-            }
-        })
-
+        });
     }
 
     return (
-        <View style={{marginLeft:20, marginRight:20}}>
-            <Image style={styles.recipeImage} source={dishesImage}/>
+        <ScrollView style={{marginLeft:20, marginRight:20}}>
+            <Image style={styles.recipeImage} source={{uri: dishesImage}}/>
             <Text style={{fontWeight:'800', fontSize: '10', fontStyle:"monospace"}}>{dishesName}</Text>
 
             <View style={{flexDirection:"row", justifyContent: 'center',alignItems: 'center', paddingTop: 10}}>
@@ -105,12 +103,13 @@ const Recipe = ({navigation, route}) => {
                 <Text style={{paddingTop: 10}}>{description}</Text>
             </View>
 
-            <ProgressButton {...
-                buttonState='progress',
-                smoothly=true,
+            <ProgressButton
+                buttonState='progress'
+                smoothly={true}
                 onPress={
                     registerAdd
-                }}
+                }
+                text='Add Recipe'
             />
             <View>
                 <Text style={{fontWeight:'700', paddingTop: 10}}>Instructions</Text>
@@ -128,7 +127,7 @@ const Recipe = ({navigation, route}) => {
                 }
 
             </View>
-        </View>
+        </ScrollView>
     );
 }
 
